@@ -1,0 +1,48 @@
+function out = machineprob2(x1, y1, x2, y2, x3, y3)
+        a1 = x1 - x2;
+        a2 = x1 - x3;
+        
+        a3 = x3 - x1;
+        a4 = x2 - x1;
+        
+        b1 = y1 - y2;
+        b2 = y1 - y3;
+        
+        b3 = y3 - y1;
+        b4 = y2 - y1;
+        
+
+        E1 = (x1.^2) - (x3.^2);
+        E2 = (x2.^2) - (x1.^2);
+        E3 = (y1.^2) - (y3.^2);
+        E4 = (y2.^2) - (y1.^2);
+        
+%Equations for f and g which are the center of the circle
+        F1 = (((E1.*a1) + (E3.*a1) + (E2.*a2) + (E4.*a2)));
+        F2 = (2.*((b3.*a1)-(b4.*a2)));
+        F = (F1./F2);
+    
+        G1= ((E1.*b1)+(E3.*b1)+(E2.*b2)+(E4.*b2));
+        G2 = (2.*((a3.*b1)-(a4.*b2)));
+        G = (G1./G2);
+        
+%General Equation of circle is x^2 + y^2 + 2*g*x + 2*f*y + c = 0 
+         D = (-x1.^2)-(y1.^2)-(2.*F.*y1)-(2.*G.*x1);
+        
+%f and g is the center of the circle
+        f = -F;
+        g = -G;
+        
+        %rr is r^2
+         r2 = (g.^2).*(f.^2)-D;
+        %r is the radius of the circle
+         r = round(sqrt(r2),5);
+        %v is the vector of the circle 
+         v = [2*G,2*F,D];
+        
+    disp('Center of Circle(h,k) = %.0f ', g)
+    disp(' %.0f \n ', f)
+    disp('Radius of Circle = %.0f \n', r)
+    disp('Vector of Circle = ')
+    disp(v)
+end
