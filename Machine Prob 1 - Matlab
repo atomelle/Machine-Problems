@@ -1,9 +1,9 @@
 %Machine Problem 1
-
+%Function where n is an integer and n is >= 0
 function a = machineprob1()
 f =(0:99);
 for n=1:100
-    if f(n)<9;
+    if f(n)<=9;
         f(n)=(f(n)^2)-7;
     elseif f(n)== 9;
         f(n)= NaN;
@@ -11,16 +11,15 @@ for n=1:100
         f(n)= f(n-10);
         
     end
-    stem(f);                   % stem( is used to show curves in Matlab 
+    
+    % stem() is used to show curves in Matlab
+    stem(f);                    
 end
 
 % Labels of the graphs
-
 grid()
 title('Problem 1: Stem()')
 xlabel('x-axis')                        
 ylabel('y-axis')                        
 
 
-
-        
