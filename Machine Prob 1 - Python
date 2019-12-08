@@ -1,0 +1,30 @@
+#Machine Problem 1
+
+# to import matlab plotting in python
+import matplotlib.pyplot as plot 
+
+# N is equal to 0:99
+a = list(range(0,100)) 
+k = []
+def f():
+    for i in range(0,100): 
+        b = (i**2)-7 
+        if i<=9:
+            k.append(b)
+
+        else:
+            while i >=10:
+                i = i-10
+                if i<10:
+                    b = (i**2)-7 
+                    k.append(b)
+    return i
+
+f()
+plot.grid()
+plot.title('Problem 1: Stem()')
+plot.xlabel('x-axis')
+plot.ylabel('y-axis')
+
+# Code used for stem plotting
+plot.stem(a, k, '-k', use_line_collection = True) 
