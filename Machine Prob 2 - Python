@@ -1,41 +1,53 @@
 # Machine Problem 2
+ # Program that accepts three points (𝑥,y)  
+ # lying on a circle in a two-dimensional Cartesian plane
  
 from math import sqrt
+
 def MachineProb2(x1, y1, x2, y2, x3, y3) :
-        xa = x1 - x2;
-        xb = x1 - x3;
-        xc = x3 - x1;
-        xd = x2 - x1;
-        ya = y1 - y2;
-        yb = y1 - y3;
-        yc = y3 - y1;
-        yd = y2 - y1;
+        a1 = x1 - x2;
+        a2 = x1 - x3;
+        
+        a3 = x3 - x1;
+        a4 = x2 - x1;
+        
+        b1 = y1 - y2;
+        b2 = y1 - y3;
+        b3 = y3 - y1;
+        b4 = y2 - y1;
+        
+        #Equations that show that they are the same as x1^2 - x3^2
+        E1 = (x1*x1) - (x3*x3);
+        E2 = (x2*x2) - (x1*x1);
+        E3 = (y1*y1) - (y3*y3);
+        E4 = (y2*y2) - (y1*y1);
+        
+        #Equations for f and g which are the center of the circle
+        F1 = (((E1*a1) + (E3*a1) + (E2*a2) + (E4*a2)));
+        F2 = (2*((b3*a1)-(b4*a2)));
+        F = (F1//F2);
     
-        EA = (x1*x1) - (x3*x3);
-        EB = (x2*x2) - (x1*x1);
-        EC = (y1*y1) - (y3*y3);
-        ED = (y2*y2) - (y1*y1);
-    
-        Fa = (((EA*xa) + (EC*xa) + (EB*xb) + (ED*xb)));
-        Fb = (2*((yc*xa)-(yd*xb)));
-        F = (Fa//Fb);
-    
-        Ga = ((EA*ya)+(EC*ya)+(EB*yb)+(ED*yb));
-        Gb = (2*((xc*ya)-(xd*yb)));
-        G = (Ga//Gb);
-    
+        G1= ((E1*b1)+(E3*b1)+(E2*b2)+(E4*b2));
+        G2 = (2*((a3*b1)-(a4*b2)));
+        G = (G1//G2);
+        
+        # General Equation of circle is x^2 + y^2 + 2*g*x + 2*f*y + c = 0 
         D = (-x1*x1)-(y1*y1)-(2*F*y1)-(2*G*x1);
         
+        #f and g is the center of the circle
         f = -F;
         g = -G;
         
-        r2 = (g*g)*(f*f)-D;
-        r = round(sqrt(r2),5);
+        #rr is r^2
+        rr = (g*g)*(f*f)-D;
+        #r is the radius of the circle
+        r = round(sqrt(rr),5);
+        #v is the vector of the circle
         v = [2*G,2*F,D];
         
-        print("Center of Circle = (",g,",",f,")");
-        print("Radius of Circle= ", r)
-        print("Vector of Circle",v)
+        print("\n Center of the Circle = (",g,",",f,")");
+        print("\n Radius of the Circle= ", r)
+        print("\n Vector of the Circle",v)
                      
 x1 = int(input("Input x1 = "))
 y1 = int(input("Input y2 = "))
@@ -43,4 +55,5 @@ x2 = int(input("Input x2 = "))
 y2 = int(input("Input y2 = "))
 x3 = int(input("Input x3 = "))
 y3 = int(input("Input y3 = "))
+
 MachineProb2(x1,y1,x2,y2,x3,y3)
