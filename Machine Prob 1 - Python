@@ -21,6 +21,7 @@ def f():
     return i
 
 f()
+# Labels for graphs
 plot.grid()
 plot.title('Problem 1: Stem()')
 plot.xlabel('x-axis')
